@@ -6,8 +6,7 @@ pipeline {
         stage('Build') {
             steps {
                 dir("HelloWorld"){
-                    sh "mvn -f pom.xml clean install -Dmaven.test.skip=true"
-                    sh "tree"
+
                 }
 
             }
