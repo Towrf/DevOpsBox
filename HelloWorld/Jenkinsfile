@@ -1,0 +1,50 @@
+pipeline {
+    agent { label 'master'}
+
+
+    stages {
+        stage('Build') {
+            steps {
+                dir("HelloWorld"){
+                    sh "mvn -f pom.xml clean install -Dmaven.test.skip=true"
+                    sh "tree"
+                }
+
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('nexus') {
+            steps {
+            	script {
+            	    dir("HelloWorld"){
+            	        def pom = readMavenPom file: "pom.xml";
+            	        
+            	        dir("target"){
+            	            nexusArtifactUploader(
+            	            nexusVersion: 'nexus3',
+            	            protocol: 'http',
+            	            nexusUrl: 'core.towrf.com',
+            	            groupId: pom.groupId,
+            	            version: pom.version,
+            	            repository: 'MavenRepo',
+            	            credentialsId: 'mavencredentials',
+            	            artifacts: [ 
+            	            [ artifactId: pom.artifactId,
+            	            classifier: '',
+            	            file: '',
+            	            type: pom.packaging ] ]
+            	            )
+            	        }
+
+            	    }
+
+            	}
+
+            }
+        }
+    }
+}
