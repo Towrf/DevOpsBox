@@ -30,8 +30,8 @@ pipeline {
             	            nexusUrl: 'core.towrf.com',
             	            groupId: pom.groupId,
             	            version: pom.version,
-            	            repository: 'MavenRepo',
-            	            credentialsId: 'mavencredentials',
+            	            repository: 'MavenRepository2',
+            	            credentialsId: 'mavencredentials2',
             	            artifacts: [ 
             	            [ artifactId: pom.artifactId,
             	            classifier: '',
