@@ -16,6 +16,11 @@ pipeline {
                 echo 'Testing..'
             }
         }
+		stage('hola') {
+            steps {
+                echo 'hola..'
+            }
+        }
         stage('nexus') {
             steps {
             	script {
