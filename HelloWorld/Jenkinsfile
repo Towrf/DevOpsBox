@@ -26,14 +26,11 @@ pipeline {
     	stage('Test') {
 			steps {
 	            dir("HelloWorld"){
-					script {
-					    def propertiesFilePath = "${env.WORKSPACE}/TestCases.jmx"
-						build job: 'JmeterTesting', parameters: 
-						[
-							[$class: "FileParameterValue", name: "propertiesFile", file: new FileParameterValue.FileItemImpl(new File(propertiesFilePath))
-							]
-						]
-					}
+	              String path = pwd();
+	            
+						build job: 'JmeterTesting', parameters:[
+                string(name: 'path', value: path)
+                ]
 	            }
 			}
 		}
