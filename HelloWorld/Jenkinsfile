@@ -8,7 +8,7 @@ pipeline {
     environment {
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
-        NEXUS_URL = "core.towrf.com:8081"
+        NEXUS_URL = "192.168.8.2:8081"
         NEXUS_REPOSIRTORY = "CICDRepository"
         NEXUS_CREDENTIAL_ID = "jenkins_client"
     }
