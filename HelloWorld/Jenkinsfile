@@ -26,7 +26,7 @@ pipeline {
     	stage('Test') {
 			steps {
 	            dir("HelloWorld"){
-	            	sh "jmeter -Jjmeter.save.saveservice.output_format=xml -n -t TestCases.jmx -l TestResult.jtl"
+	            	sh "/var/jenkins_home/apache-jmeter-5.4.1/bin/jmeter -Jjmeter.save.saveservice.output_format=xml -n -t TestCases.jmx -l TestResult.jtl"
 	            	step([$class: 'ArtifactArchiver', artifacts: '**/*.jtl'])    
             	}
 			}
