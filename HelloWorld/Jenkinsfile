@@ -25,9 +25,13 @@ pipeline {
     
     	stage('Test') {
 			steps {
-				echo 'Testing..'
+	            dir("HelloWorld"){
+	            	sh "jmeter -Jjmeter.save.saveservice.output_format=xml -n -t TestCases.jmx -l TestResult.jtl"
+	            	step([$class: 'ArtifactArchiver', artifacts: '**/*.jtl'])    
+            	}
 			}
 		}
+
 	
 		stage('Publish to Nexus') {
             steps {
