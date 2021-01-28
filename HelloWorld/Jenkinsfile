@@ -26,11 +26,10 @@ pipeline {
     	stage('Test') {
 			steps {
 	            dir("HelloWorld"){
-	              String path = pwd();
-	            
-						build job: 'JmeterTesting', parameters:[
-                string(name: 'path', value: path)
-                ]
+	              	TEST_PATH = pwd();
+		            build job: 'JmeterTesting', parameters:[
+                		string(name: 'path', value: path)
+                	]
 	            }
 			}
 		}
