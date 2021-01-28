@@ -29,8 +29,8 @@ pipeline {
             	            nexusUrl: 'core.towrf.com',
             	            groupId: pom.groupId,
             	            version: pom.version,
-            	            repository: 'MavenRepository2',
-            	            credentialsId: 'mavencredentials2',
+            	            repository: 'CICDRepository',
+            	            credentialsId: 'jenkins_client',
             	            artifacts: [ 
             	            [ artifactId: pom.artifactId,
             	            classifier: '',
