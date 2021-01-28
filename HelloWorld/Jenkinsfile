@@ -29,7 +29,7 @@ pipeline {
                     script {
 	              	TEST_PATH = pwd();
 		            build job: 'JmeterTesting', parameters:[
-                		string(name: 'path', value: TEST_PATH)
+                		string(name: 'TEST_PATH', value: TEST_PATH)
                 	]
                 	}
 	            }
