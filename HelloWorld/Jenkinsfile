@@ -17,6 +17,7 @@ pipeline {
         stage('Build') {
             steps {
 	            dir("HelloWorld"){
+	            	sh "mvn dependency:go-offline dependency:resolve-plugins"
 	            	sh "mvn package -DskipTests=true"    
             }
         }
